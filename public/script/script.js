@@ -151,9 +151,19 @@ function AddGroupMember(lastName, firstName) {
 * 
 */
 function RemoveGroupMember() {
-
-	throw "ERROR! You must work in this function before to send to Staging Environment!";
-
+    // First of all it checks if any member is selected in the list
+    if (membersLst.selectedIndex === -1) {
+        throw "Please select a group member to remove";
+    } else {
+        // If not, it removes the selected member
+        membersLst.remove(membersLst.selectedIndex);
+        
+        // Then it recalculates discount if group size is changed
+        if (groupSize.value !== "") {
+            CalcGroupDiscount(groupSize.value);
+        }
+    }
+	//throw "ERROR! You must work in this function before to send to Staging Environment!";
 }
 
 /*
